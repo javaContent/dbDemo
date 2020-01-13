@@ -1,0 +1,18 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.example.one.config.MybatisConfig",
+      "name": "spring.datasource.druid",
+      "sourceMethod": "master()",
+      "type": "javax.sql.DataSource"
+    },
+    {
+      "sourceType": "com.example.one.config.MybatisOperationConfig",
+      "name": "spring.datasource.slave",
+      "sourceMethod": "master()",
+      "type": "javax.sql.DataSource"
+    }
+  ],
+  "properties": []
+}

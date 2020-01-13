@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>   
+<!DOCTYPE mapper   PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.example.one.dao.query.QueryUserDaoI">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.example.one.entity.SysUser">
+		<id column="id" property="id"/>
+		<id column="userName" property="user_name"/>
+		<id column="password" property="password"/>
+		<id column="lastPasswordResetDate" property="last_password_reset_date"/>
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		id,user_name,password
+	</sql>
+	
+	<select id="selectById" resultType="com.example.one.entity.SysUser">
+		select id,user_name as userName,password from user where id = #{id}
+	</select>
+	
+	<select id="login" resultType="com.example.one.entity.SysUser">
+		select id,user_name as userName,password from user 
+		where user_name = #{userName} 
+		and password = #{password} 
+	</select>
+	
+	<select id="findByUserName" resultType="com.example.one.entity.SysUser">
+		select id,user_name as userName,password,last_password_reset_date as lastPasswordResetDate from user where user_name = #{userName}
+	</select>
+
+	<select id="queryList" resultType="com.example.one.entity.SysUser">
+		select * from user;
+	</select>
+
+
+</mapper> 
