@@ -20,7 +20,7 @@ public class MutiplyDataSource {
     public DataSource primaryDataSource(){
         return new DruidDataSource();
     }
-    @Bean(name = "dataSourceLocal")
+    @Bean(name = "dataSourceSlave")
     @ConfigurationProperties(prefix = "spring.datasource.slave")
     public DataSource localDataSource(){
         return new DruidDataSource();
@@ -36,7 +36,7 @@ public class MutiplyDataSource {
         //配置多数据源
         HashMap<Object, Object> dataSourceMap = new HashMap();
         dataSourceMap.put(ContextConst.DataSourceType.PRIMARY.name(),primaryDataSource());
-        dataSourceMap.put(ContextConst.DataSourceType.LOCAL.name(),localDataSource());
+        dataSourceMap.put(ContextConst.DataSourceType.SLAVE.name(),localDataSource());
         dynamicDataSource.setTargetDataSources(dataSourceMap);
         return dynamicDataSource;
     }
