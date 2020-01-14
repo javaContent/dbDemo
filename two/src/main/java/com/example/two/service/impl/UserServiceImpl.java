@@ -1,5 +1,7 @@
 package com.example.two.service.impl;
 
+import com.example.two.annotation.DataSourceSign;
+import com.example.two.common.ContextConst;
 import com.example.two.dao.UserDaoI;
 import com.example.two.entity.SysUser;
 import com.example.two.service.UserServiceI;
@@ -12,7 +14,8 @@ public class UserServiceImpl implements UserServiceI {
 
 	@Autowired
 	private UserDaoI userDao;
-	
+
+//	@DataSourceSign(ContextConst.DataSourceType.SLAVE)
 	@Override
 	public SysUser selectById(Integer id) {
 		try {

@@ -2,6 +2,7 @@ package com.example.two.config;
 
 import com.example.two.common.ContextConst;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -15,15 +16,19 @@ import java.util.HashMap;
 @Configuration
 public class MutiplyDataSource {
 
+//    @Primary
     @Bean(name = "dataSourcePrimary")
     @ConfigurationProperties(prefix = "spring.datasource.master")
     public DataSource primaryDataSource(){
-        return new DruidDataSource();
+
+        return DataSourceBuilder.create().build();
     }
+
     @Bean(name = "dataSourceSlave")
     @ConfigurationProperties(prefix = "spring.datasource.slave")
     public DataSource localDataSource(){
-        return new DruidDataSource();
+       return  DataSourceBuilder.create().build();
+//        return new DruidDataSource();
     }
 
     @Primary
